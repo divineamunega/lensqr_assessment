@@ -1,0 +1,88 @@
+@mixin prompt-font_arg($weight, $style: normal) {
+	font-family: "Prompt", sans-serif;
+	font-weight: $weight;
+	font-style: $style;
+}
+
+@mixin prompt-font() {
+	font-family: "Prompt", sans-serif;
+	font-style: normal;
+}
+
+@mixin flex_center($direction: row) {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: $direction;
+}
+
+// Mixin for text sizes
+@mixin text-size($size) {
+	@if $size == xs {
+		font-size: 1rem; // 10px
+	} @else if $size == sm {
+		font-size: 1.25rem; // 12.5px
+	} @else if $size == md {
+		font-size: 1.5rem; // 15px
+	} @else if $size == lg {
+		font-size: 2rem; // 20px
+	} @else if $size == xl {
+		font-size: 2.5rem; // 25px
+	} @else if $size == "2xl" {
+		font-size: 3rem; // 30px
+	} @else if $size == "3xl" {
+		font-size: 4rem; // 40px
+	} @else if $size == "4xl" {
+		font-size: 5rem; // 50px
+	} @else if $size == "5xl" {
+		font-size: 6rem; // 60px
+	} @else {
+		font-size: 2rem; // default (20px)
+	}
+}
+
+// Mixin for headers
+@mixin header-size($size) {
+	@if $size == xs {
+		font-size: 2rem; // 20px
+	} @else if $size == sm {
+		font-size: 2.5rem; // 25px
+	} @else if $size == md {
+		font-size: 3rem; // 30px
+	} @else if $size == lg {
+		font-size: 4rem; // 40px
+	} @else if $size == xl {
+		font-size: 5rem; // 50px
+	} @else if $size == "2xl" {
+		font-size: 6rem; // 60px
+	} @else {
+		font-size: 4rem; // default (40px)
+	}
+}
+
+// Mixin for subheaders
+@mixin subheader-size($size) {
+	@if $size == xs {
+		font-size: 1.5rem; // 15px
+	} @else if $size == sm {
+		font-size: 2rem; // 20px
+	} @else if $size == md {
+		font-size: 2.5rem; // 25px
+	} @else if $size == lg {
+		font-size: 3rem; // 30px
+	} @else if $size == xl {
+		font-size: 4rem; // 40px
+	} @else {
+		font-size: 2.5rem; // default (25px)
+	}
+}
+
+@mixin respond-to($breakpoint) {
+	@if map-has-key($breakpoints, $breakpoint) {
+		@media (min-width: map-get($breakpoints, $breakpoint)) {
+			@content;
+		}
+	} @else {
+		@error "Invalid breakpoint: '#{$breakpoint}'. Available breakpoints: #{map-keys($breakpoints)}";
+	}
+}

@@ -1,9 +1,10 @@
 @use "../styles/variables";
+@use "../styles/mixins";
 
 .layout {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	@include mixins.prompt-font();
+	@include mixins.flex_center();
+
 	height: 100dvh;
 
 	& > div {
@@ -20,19 +21,11 @@
 	}
 }
 
-.logoImageContainer {
-	font-family: "Prompt", sans-serif;
-	font-weight: 500;
-	font-style: normal;
-	color: variables.$secondary_color;
-}
-
 .logoImageContainer_image {
+	@include mixins.flex_center();
+
 	margin-top: 9rem;
 	height: 60%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 
 	& > img {
 		display: block;
@@ -42,26 +35,22 @@
 }
 
 .formContainer {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	justify-content: center;
-	gap: 6rem;
+	@include mixins.flex_center(column);
+
+	gap: 8.5rem;
 }
 
 .formDetails {
 	width: 100%;
-	font-family: "Prompt", sans-serif;
 
 	& > h2 {
+		@include mixins.header-size(xl);
 		font-weight: 600;
-		font-style: normal;
-		font-size: 5rem;
 		color: variables.$secondary_color;
 	}
 
 	& > p {
-		font-size: 2rem;
+		@include mixins.subheader-size(sm);
 		color: #545f7d;
 	}
 }

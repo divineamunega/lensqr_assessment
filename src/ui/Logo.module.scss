@@ -1,5 +1,12 @@
+@use "../styles/mixins";
+@use "../styles/variables";
+
 .logo {
+	@include mixins.header-size(lg);
+
 	display: inline-flex;
 	gap: 1rem;
-	font-size: 4rem;
+
+	font-weight: 500;
+	color: variables.$secondary_color;
 }

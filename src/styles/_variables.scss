@@ -1,2 +1,14 @@
 $primary_color: #39cdcc;
 $secondary_color: #213f7d;
+
+$breakpoints: (
+	xs: 320px,
+	// Extra Small devices
+	sm: 576px,
+	// Small devices
+	md: 768px,
+	// Medium devices (tablets)
+	lg: 992px,
+	// Large devices (desktops)
+	xl: 1200px // Extra Large devices (wide screens),,
+);

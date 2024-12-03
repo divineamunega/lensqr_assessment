@@ -1,10 +1,9 @@
 @use "../../styles/variables";
+@use "../../styles/mixins";
 
 .form {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
+	@include mixins.flex_center(column);
+
 	width: 100%;
 	gap: 2.5rem;
 
@@ -14,31 +13,46 @@
 }
 
 .form__forgotPassword {
+	@include mixins.text-size(md);
+
 	color: variables.$primary_color;
 	text-transform: uppercase;
-	font-family: "Prompt", sans-serif;
 	font-weight: 500;
-	font-style: normal;
+	padding: 0.5rem;
 
-	font-size: 1.3rem;
+	&:focus {
+		border: 2px solid variables.$primary_color;
+		border-radius: 5px;
+		outline: none;
+	}
 }
 
 .form__submitBtn {
+	@include mixins.text-size(md);
+
 	background-color: variables.$primary_color;
 	text-transform: uppercase;
-	font-family: "Prompt", sans-serif;
 	font-weight: 500;
-	font-style: normal;
-
-	font-size: 1.3rem;
 	color: white;
 	width: 100%;
-	padding: 1rem 1rem;
+	padding: 1.5rem 1rem;
 	border-radius: 10px;
 	outline: none;
 	border: none;
 	cursor: pointer;
+	transition: all 0.3s ease; // Smooth transition for animatable properties
+	border: 2px solid variables.$primary_color;
 
 	&:hover {
+		color: variables.$primary_color;
+		background-color: white;
+	}
+
+	&:active {
+		transform: scale(0.95);
+	}
+
+	&:focus {
+		box-shadow: 0 0 0 5px rgba(variables.$primary_color, 0.3); // Replace outline with box-shadow
 	}
 }
