@@ -7,17 +7,27 @@
 
 	height: 100dvh;
 
-	& > div {
-		width: 50%;
-		height: 100%;
-		background-color: white;
-		display: flex;
-		padding: 8rem 10rem;
-		flex-direction: column;
+	// Middle Screen
+	@include mixins.respond-to("md") {
+		@include mixins.flex_center(column);
+		height: fit-content;
+	}
+}
 
-		&:nth-child(2) {
-			box-shadow: 0px 15px 90px 0px #00000008;
-		}
+.layout > div {
+	width: 50%;
+	background-color: white;
+	display: flex;
+	padding: 8rem 10rem;
+	flex-direction: column;
+
+	@include mixins.respond-to("lg") {
+		padding: 3rem 5rem;
+		width: 100%;
+	}
+
+	&:nth-child(2) {
+		box-shadow: 0px 15px 90px 0px #00000008;
 	}
 }
 
