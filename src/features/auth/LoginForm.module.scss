@@ -1,0 +1,44 @@
+@use "../../styles/variables";
+
+.form {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 100%;
+	gap: 2.5rem;
+
+	& > div {
+		width: 100%;
+	}
+}
+
+.form__forgotPassword {
+	color: variables.$primary_color;
+	text-transform: uppercase;
+	font-family: "Prompt", sans-serif;
+	font-weight: 500;
+	font-style: normal;
+
+	font-size: 1.3rem;
+}
+
+.form__submitBtn {
+	background-color: variables.$primary_color;
+	text-transform: uppercase;
+	font-family: "Prompt", sans-serif;
+	font-weight: 500;
+	font-style: normal;
+
+	font-size: 1.3rem;
+	color: white;
+	width: 100%;
+	padding: 1rem 1rem;
+	border-radius: 10px;
+	outline: none;
+	border: none;
+	cursor: pointer;
+
+	&:hover {
+	}
+}

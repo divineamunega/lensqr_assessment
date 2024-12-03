@@ -1,0 +1,30 @@
+@use "../styles/variables";
+
+.inputCont {
+	position: relative;
+}
+
+.input {
+	outline: none;
+	width: 100%;
+	padding: 1.6rem 1rem;
+	border: 2px solid #545f7d26;
+	border-radius: 5px;
+
+	&::placeholder {
+		color: #545f7d96;
+	}
+}
+
+.input_showBtn {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 1.3rem;
+	border: none;
+	background-color: rgba(0, 0, 0, 0);
+	color: variables.$primary_color;
+	font-weight: 500;
+	cursor: pointer;
+	padding: 1rem;
+}
