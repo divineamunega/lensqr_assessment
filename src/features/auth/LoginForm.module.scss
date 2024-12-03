@@ -40,7 +40,7 @@
 	outline: none;
 	border: none;
 	cursor: pointer;
-	transition: all 0.3s ease; // Smooth transition for animatable properties
+	transition: all 0.3s ease;
 	border: 2px solid variables.$primary_color;
 
 	&:hover {
@@ -53,6 +53,6 @@
 	}
 
 	&:focus {
-		box-shadow: 0 0 0 5px rgba(variables.$primary_color, 0.3); // Replace outline with box-shadow
+		box-shadow: 0 0 0 5px rgba(variables.$primary_color, 0.3);
 	}
 }

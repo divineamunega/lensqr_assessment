@@ -15,18 +15,15 @@
 	@include mixins.prompt-font_arg(400);
 	transition: box-shadow;
 	transition-duration: 500ms;
+	background-color: white;
+	color: variables.$secondary_color;
 
 	&::placeholder {
 		color: #545f7d96;
 	}
 
 	&:focus {
-		box-shadow: 0px 0px 8px
-			color.scale(variables.$primary_color, $lightness: 51.41%);
-		-webkit-box-shadow: 0px 0px 8px
-			color.scale(variables.$primary_color, $lightness: 51.41%);
-		-moz-box-shadow: 0px 0px 8px
-			color.scale(variables.$primary_color, $lightness: 51.41%);
+		box-shadow: 0 0 0 3px rgba(variables.$primary_color, 0.3);
 	}
 }
 
