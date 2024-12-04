@@ -1,0 +1,83 @@
+@use "../styles/mixins";
+@use "../styles/variables";
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+.nav {
+	@include mixins.prompt-font();
+	@include mixins.flex_between();
+
+	width: 100%;
+	height: 100%;
+
+	& button,
+	& a {
+		color: variables.$secondary_color;
+		cursor: pointer;
+	}
+}
+
+.navlinks {
+	& > ul {
+		@include mixins.flex_between();
+		gap: 4rem;
+	}
+}
+
+.navlinks_documentation {
+	@include mixins.text_size(md);
+
+	text-decoration: underline;
+	font-family: "Roboto", sans-serif;
+	font-weight: 400;
+	padding: 0.5rem;
+	border: 3px solid white;
+	transition: border color;
+	transition-duration: 500ms;
+
+	&:focus {
+		border: 3px solid variables.$primary_color;
+		transition-duration: 500ms;
+		outline: none;
+		border-radius: 5px;
+	}
+}
+
+.navlinks_notifs {
+	background-color: white;
+	padding: 0.5rem;
+	border: 3px solid white;
+	transition: border color;
+	transition-duration: 500ms;
+
+	&:focus {
+		border: 3px solid variables.$primary_color;
+		transition-duration: 500ms;
+		outline: none;
+		border-radius: 5px;
+	}
+}
+
+.avatar {
+	@include mixins.flex_center();
+	@include mixins.work_sans_font();
+	@include mixins.text_size(md);
+
+	background-color: white;
+	border: none;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+
+	padding: 0.5rem;
+	border: 3px solid white;
+	transition: border color;
+	transition-duration: 500ms;
+
+	&:focus {
+		border: 3px solid variables.$primary_color;
+		transition-duration: 500ms;
+		outline: none;
+		border-radius: 5px;
+	}
+}

@@ -1,13 +1,14 @@
+import { Link } from "react-router";
 import style from "./Logo.module.scss";
 
 const Logo = () => {
 	return (
-		<div className={style.logo}>
+		<Link to="/" className={style.logo} tabIndex={0}>
 			<span>
 				<img src="./logo.svg" alt="logo image" />
 			</span>
 			<span>lendsqr</span>
-		</div>
+		</Link>
 	);
 };
 

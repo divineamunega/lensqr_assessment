@@ -9,4 +9,18 @@
 
 	font-weight: 500;
 	color: variables.$secondary_color;
+
+	padding: 0.5rem;
+	border: 3px solid white;
+	transition: border color;
+	transition-duration: 500ms;
+	user-select: none;
+	cursor: pointer;
+
+	&:focus {
+		border: 3px solid variables.$primary_color;
+		transition-duration: 500ms;
+		outline: none;
+		border-radius: 5px;
+	}
 }

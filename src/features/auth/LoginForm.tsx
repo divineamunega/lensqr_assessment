@@ -1,10 +1,17 @@
-// import { useState } from "react";
+import { MouseEventHandler } from "react";
 import Input from "../../ui/Input";
 import style from "./LoginForm.module.scss";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const LoginForm = () => {
-	// const [showPassword, setShowPassword] = useState(false);
+	const navigate = useNavigate();
+
+	const login: MouseEventHandler<HTMLButtonElement> = function (e) {
+		e.preventDefault();
+
+		//TODO: Some additonal logic here if there's time
+		navigate("/dashboard");
+	};
 
 	return (
 		<form className={style.form}>
@@ -19,7 +26,9 @@ const LoginForm = () => {
 			</div>
 
 			<div>
-				<button className={style.form__submitBtn}>Log in</button>
+				<button className={style.form__submitBtn} onClick={login}>
+					Log in
+				</button>
 			</div>
 		</form>
 	);

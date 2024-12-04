@@ -1,0 +1,28 @@
+@use "../styles/mixins";
+
+.dashBoardLayout {
+	@include mixins.work_sans_font();
+	display: grid;
+	grid-template-columns: 2.5fr 12fr;
+	grid-template-rows: 1.5fr 11fr;
+	height: 100dvh;
+
+	& > * {
+		&:nth-child(1) {
+			background-color: white;
+			grid-column: 1/-1;
+			grid-row: 1;
+			box-shadow: 1px 1px 20px 0px rgba(0, 0, 0, 0.061);
+			z-index: 1;
+			padding: 0 3.5rem;
+		}
+
+		&:nth-child(2) {
+			background-color: white;
+			box-shadow: 4px 2px 20px 0px rgba(0, 0, 0, 0.061);
+		}
+		&:nth-child(3) {
+			background-color: #fbfbfb;
+		}
+	}
+}

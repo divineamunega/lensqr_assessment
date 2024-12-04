@@ -5,9 +5,11 @@ type Props = {
 	type: string;
 	required?: boolean;
 	placeholder?: string;
+	padding?: string;
+	width?: string;
 };
 
-const Input = ({ type, required, placeholder }: Props) => {
+const Input = ({ type, required, placeholder, padding, width }: Props) => {
 	const inputRef = useRef<HTMLInputElement | null>(null);
 	const [btnText, setBtnText] = useState(type === "password" ? "SHOW" : "");
 
@@ -26,13 +28,21 @@ const Input = ({ type, required, placeholder }: Props) => {
 	};
 
 	return (
-		<div className={style.inputCont}>
+		<div
+			className={style.inputCont}
+			style={(function () {
+				if (width) return { width };
+			})()}
+		>
 			<input
 				className={style.input}
 				type={type}
 				required={required}
 				placeholder={placeholder || ""}
 				ref={inputRef}
+				style={(function () {
+					if (padding) return { padding };
+				})()}
 			/>
 			{type === "password" && (
 				<button
@@ -41,6 +51,12 @@ const Input = ({ type, required, placeholder }: Props) => {
 					aria-label="Toggle password visibility"
 				>
 					{btnText}
+				</button>
+			)}
+
+			{type === "search" && (
+				<button className={style.input_searchIcon} tabIndex={-1}>
+					<img src="./searchIcon.svg" alt="Search" />
 				</button>
 			)}
 		</div>
