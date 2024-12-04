@@ -1,3 +1,4 @@
+import Sidebar from "../ui/Sidebar";
 import TopNav from "../ui/TopNav";
 import style from "./DashboardLayout.module.scss";
 
@@ -9,7 +10,7 @@ const DahsboardLayout = () => {
 			</header>
 
 			<aside>
-				<div className="sidebar"></div>
+				<Sidebar />
 			</aside>
 
 			<main>
