@@ -9,7 +9,7 @@ const DahsboardLayout = () => {
 				<TopNav />
 			</header>
 
-			<aside>
+			<aside className={style.aside}>
 				<Sidebar />
 			</aside>
 

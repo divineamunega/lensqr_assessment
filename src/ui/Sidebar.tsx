@@ -80,7 +80,7 @@ const settings = [
 
 const Sidebar = () => {
 	return (
-		<nav>
+		<nav className={style.cont}>
 			<ul className={style.sidebar_organization}>
 				<li>
 					<button>
@@ -88,6 +88,9 @@ const Sidebar = () => {
 							<img src="./switch_organization.svg" alt="Switch Organization" />
 						</span>
 						<span>Switch Organzation</span>
+						<span>
+							<img src="./sidebar/triangle.svg" />
+						</span>
 					</button>
 				</li>
 				<li>
@@ -101,49 +104,57 @@ const Sidebar = () => {
 			</ul>
 
 			{/* Customers */}
-			<p>Customers</p>
-			{customers.map((item, index) => (
-				<li key={index}>
-					<Link to={item.path}>
-						<span>
-							<img src={item.imgPath} />
-						</span>
-						<span>{item.label}</span>
-					</Link>
-				</li>
-			))}
+			<div className={style.sidebar_navigation}>
+				<p>Customers</p>
+				<ul>
+					{customers.map((item, index) => (
+						<li key={index}>
+							<Link to={item.path} className={style.navlink}>
+								<span>
+									<img src={item.imgPath} />
+								</span>
+								<span>{item.label}</span>
+							</Link>
+						</li>
+					))}
+				</ul>
+			</div>
 
 			{/* Bussiness */}
-			<p>Businesses</p>
+			<div className={style.sidebar_navigation}>
+				<p>Businesses</p>
 
-			<ul>
-				{bussinesses.map((item, index) => (
-					<li key={index}>
-						<Link to={item.path}>
-							<span>
-								<img src={item.imgPath} />
-							</span>
-							<span>{item.label}</span>
-						</Link>
-					</li>
-				))}
-			</ul>
+				<ul>
+					{bussinesses.map((item, index) => (
+						<li key={index}>
+							<Link to={item.path} className={style.navlink}>
+								<span>
+									<img src={item.imgPath} />
+								</span>
+								<span>{item.label}</span>
+							</Link>
+						</li>
+					))}
+				</ul>
+			</div>
 
 			{/* Settings */}
-			<p>Settings</p>
+			<div className={style.sidebar_navigation}>
+				<p>Settings</p>
 
-			<ul>
-				{settings.map((item, index) => (
-					<li key={index}>
-						<Link to={item.path}>
-							<span>
-								<img src={item.imgPath} />
-							</span>
-							<span>{item.label}</span>
-						</Link>
-					</li>
-				))}
-			</ul>
+				<ul>
+					{settings.map((item, index) => (
+						<li key={index}>
+							<Link to={item.path} className={style.navlink}>
+								<span>
+									<img src={item.imgPath} />
+								</span>
+								<span>{item.label}</span>
+							</Link>
+						</li>
+					))}
+				</ul>
+			</div>
 		</nav>
 	);
 };

@@ -3,8 +3,8 @@
 .dashBoardLayout {
 	@include mixins.work_sans_font();
 	display: grid;
-	grid-template-columns: 2.5fr 12fr;
-	grid-template-rows: 1.5fr 11fr;
+	grid-template-columns: 3.7fr 12fr;
+	grid-template-rows: 1.5fr 10fr;
 	height: 100dvh;
 
 	& > * {
@@ -17,12 +17,22 @@
 			padding: 0 3.5rem;
 		}
 
-		&:nth-child(2) {
-			background-color: white;
-			box-shadow: 4px 2px 20px 0px rgba(0, 0, 0, 0.061);
-		}
 		&:nth-child(3) {
 			background-color: #fbfbfb;
 		}
+	}
+}
+
+.aside {
+	background-color: white;
+	box-shadow: 4px 2px 20px 0px rgba(0, 0, 0, 0.061);
+	overflow-y: scroll;
+
+	&::-webkit-scrollbar {
+		width: 10px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: rgb(238, 235, 235);
 	}
 }
