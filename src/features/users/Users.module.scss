@@ -70,3 +70,9 @@
 	gap: 1rem;
 	@include mixins.text_size(md);
 }
+
+.table_control {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}

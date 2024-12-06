@@ -4,6 +4,7 @@ import { getUsers, userData } from "../../services/apiUser";
 import { TableRow, TableRowHead } from "../../ui/Table";
 import Stats from "../../ui/Stats";
 import SelectComponent from "../../ui/Select";
+import Pagination from "../../ui/Pagination";
 
 const Users = () => {
 	const [users, setUsers] = useState<userData[]>([]);
@@ -57,12 +58,19 @@ const Users = () => {
 				</div>
 			</div>
 
-			<div>
+			<div className={styles.table_control}>
 				<div className={styles.table_stats}>
 					Showing <SelectComponent val={limit} setVal={setLimit} /> out of{" "}
 					{noOfUsers}
 				</div>
-				<div></div>
+				<div>
+					<Pagination
+						total={noOfUsers}
+						limit={limit}
+						currPage={page}
+						setCurrPage={setPage}
+					/>
+				</div>
 			</div>
 		</div>
 	);

@@ -1,0 +1,36 @@
+@use "../styles/mixins";
+@use "../styles/variables";
+
+.pagination {
+	display: flex;
+	gap: 1rem;
+
+	& > button {
+		@include mixins.work_sans_font();
+		@include mixins.text_size(lg);
+		background-color: rgba(0, 0, 0, 0);
+		border: none;
+		color: rgba(variables.$alt_color, 0.6);
+		cursor: pointer;
+		border: 2px solid rgba(0, 0, 0, 0);
+		padding: 0.5rem 1rem;
+		&:focus {
+			border: 2px solid variables.$secondary_color;
+			outline: none;
+		}
+		&.active {
+			color: variables.$secondary_color;
+		}
+	}
+
+	& > .arrowBtn {
+		border-radius: 8px;
+		color: variables.$secondary_color;
+		background-color: rgba(variables.$secondary_color, 0.1);
+
+		&:disabled {
+			filter: opacity(0.5);
+			cursor: not-allowed;
+		}
+	}
+}
