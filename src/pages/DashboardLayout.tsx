@@ -1,6 +1,7 @@
 import Sidebar from "../ui/Sidebar";
 import TopNav from "../ui/TopNav";
 import style from "./DashboardLayout.module.scss";
+import { Outlet } from "react-router";
 
 const DahsboardLayout = () => {
 	return (
@@ -14,7 +15,9 @@ const DahsboardLayout = () => {
 			</aside>
 
 			<main>
-				<div className="mainContent"></div>
+				<div className={style.mainContent}>
+					<Outlet />
+				</div>
 			</main>
 		</div>
 	);

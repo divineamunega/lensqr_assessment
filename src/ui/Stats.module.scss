@@ -1,0 +1,14 @@
+@use "../styles/variables";
+@use "../styles/mixins";
+
+.stats_name {
+	@include mixins.text_size(md);
+	text-transform: uppercase;
+	font-weight: 500;
+	text-wrap: nowrap;
+}
+.stats_number {
+	@include mixins.header-size(md);
+	color: variables.$secondary_color;
+	font-weight: 600;
+}

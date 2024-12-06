@@ -1,0 +1,100 @@
+@use "../styles/variables";
+@use "../styles/mixins";
+
+// Head Styling
+.table_row_head {
+	text-wrap: nowrap;
+	& > th {
+		gap: 2rem;
+		padding-right: 5rem;
+
+		& > div {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+		}
+	}
+}
+
+// Row styling
+.table_row {
+	@include mixins.text-size(lg);
+	width: 100%;
+	align-items: center;
+	justify-content: space-between;
+	text-wrap: nowrap;
+
+	&:not(:last-child) {
+		& > td {
+			border-bottom: 2.5px solid rgba(variables.$alt_color, 0.1);
+		}
+	}
+
+	& > td {
+		padding: 2rem 1rem 2rem 0;
+
+		&.blacklisted {
+			& > div {
+				background-color: #e4033b1d;
+				color: #e4033b;
+				padding: 1rem;
+				border-radius: 25px;
+				text-transform: capitalize;
+				@include mixins.flex_center();
+			}
+		}
+
+		&.active {
+			& > div {
+				background-color: #39cd632c;
+				color: #39cd62;
+				padding: 1rem;
+				border-radius: 25px;
+				text-transform: capitalize;
+				@include mixins.flex_center();
+			}
+		}
+
+		&.pending {
+			& > div {
+				background-color: #e9b30036;
+				color: #e9b200;
+				padding: 1rem;
+				border-radius: 25px;
+				text-transform: capitalize;
+				@include mixins.flex_center();
+			}
+		}
+
+		&.inactive {
+			& > div {
+				background-color: #545f7d19;
+				color: #545f7d;
+				padding: 1rem;
+				border-radius: 25px;
+				text-transform: capitalize;
+				@include mixins.flex_center();
+			}
+		}
+	}
+}
+
+.table_actionBtn {
+	& > button {
+		background-color: white;
+		border: none;
+		font-size: 2.5rem;
+		color: variables.$secondary_color;
+		cursor: pointer;
+		border: 3px solid white;
+		transition-duration: 500ms;
+		transition: border;
+		padding: 1rem;
+		outline: none;
+		&:focus {
+			border: 3px solid variables.$primary_color;
+			transition-duration: 500ms;
+		}
+	}
+}

@@ -1,0 +1,53 @@
+@use "../../styles/mixins";
+@use "../../styles/variables";
+
+.users {
+	@include mixins.work_sans_font();
+	color: variables.$alt_color;
+	display: flex;
+	flex-direction: column;
+	gap: 5rem;
+	width: 100%;
+
+	& > h2 {
+		@include mixins.subheader-size(lg);
+		font-weight: 500;
+		color: variables.$secondary_color;
+	}
+}
+
+.stats {
+	display: flex;
+	width: 100%;
+	gap: 2rem;
+
+	& > div {
+		gap: 0.7rem;
+		display: grid;
+		flex-direction: column;
+		background-color: rgb(255, 255, 255);
+		padding: 3rem;
+		flex-basis: 25%;
+	}
+}
+
+.tableCont {
+	background-color: rgb(255, 255, 255);
+	max-width: 100%;
+	padding: 3rem;
+}
+
+.table {
+	border-collapse: collapse;
+}
+
+.table_head {
+	@include mixins.text_size(md);
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+.scroll_table {
+	overflow-x: auto;
+	max-width: 100%;
+}
