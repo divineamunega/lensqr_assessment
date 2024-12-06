@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { userData } from "../services/apiUser";
 import styles from "./Table.module.scss";
 
@@ -45,9 +46,40 @@ const TableRow = ({ user }: TableRowProps) => {
 				<div>{user.status}</div>
 			</td>
 			<td className={`${styles.table_data} ${styles.table_actionBtn}`}>
-				<button>&#8942;</button>
+				<button>
+					&#8942;
+					<DropDown id={user.id} />
+				</button>
 			</td>
 		</tr>
+	);
+};
+
+type DropDownProp = {
+	id: string;
+};
+const DropDown = function ({ id }: DropDownProp) {
+	return (
+		<div className={styles.dropDown}>
+			<Link to={`${id}`}>
+				<span>
+					<img src="/users/eye.svg" />
+				</span>
+				<span>View Details</span>
+			</Link>
+			<Link to={`${id}`}>
+				<span>
+					<img src="/users/delete_person.svg" />
+				</span>
+				<span>Blacklist User</span>
+			</Link>
+			<Link to={`${id}`}>
+				<span>
+					<img src="/users/activate_user.svg" />
+				</span>
+				<span>Activate User</span>
+			</Link>
+		</div>
 	);
 };
 

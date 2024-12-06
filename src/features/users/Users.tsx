@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./Users.module.scss";
-import formatNumber from "../../utils/formatNumber";
 import { getUsers, userData } from "../../services/apiUser";
-import { data } from "react-router";
 import { TableRow, TableRowHead } from "../../ui/Table";
 import Stats from "../../ui/Stats";
 

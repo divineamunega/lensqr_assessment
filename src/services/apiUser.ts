@@ -1,7 +1,7 @@
 const URL = "https://run.mocky.io/v3/fa7b1cfe-ea27-443b-9dc9-de642fa9a3cf";
 
 export type userData = {
-	id: "string";
+	id: string;
 	organization: string;
 	firstName: string;
 	lastName: string;
