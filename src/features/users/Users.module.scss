@@ -50,4 +50,23 @@
 .scroll_table {
 	overflow-x: auto;
 	max-width: 100%;
+
+	&::-webkit-scrollbar {
+		width: 10px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: rgb(250, 247, 247);
+
+		&:hover {
+			background-color: rgb(210, 210, 210);
+		}
+	}
+}
+
+.table_stats {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	@include mixins.text_size(md);
 }

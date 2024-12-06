@@ -3,29 +3,36 @@ import styles from "./Users.module.scss";
 import { getUsers, userData } from "../../services/apiUser";
 import { TableRow, TableRowHead } from "../../ui/Table";
 import Stats from "../../ui/Stats";
+import SelectComponent from "../../ui/Select";
 
 const Users = () => {
 	const [users, setUsers] = useState<userData[]>([]);
+	const [noOfUsers, setNoOfUsers] = useState<number>(0);
+	const [page, setPage] = useState(1);
+	const [limit, setLimit] = useState(10);
 	const [isLoading, setIsLoading] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
 
-	const loadUsers = async function (page = 1, limit = 10) {
-		setIsLoading(true);
-		setErrorMessage("");
-		const res = await getUsers(page, limit);
-		if ("data" in res) {
-			setUsers(res.data);
-			console.log(res.data);
-		} else {
-			setErrorMessage(res.error);
-		}
+	useEffect(
+		function () {
+			const loadUsers = async function () {
+				setIsLoading(true);
+				setErrorMessage("");
+				const res = await getUsers(page, limit);
+				if ("data" in res) {
+					setUsers(res.data);
+					setNoOfUsers(res.total);
+				} else {
+					setErrorMessage(res.error);
+				}
 
-		setIsLoading(false);
-	};
+				setIsLoading(false);
+			};
 
-	useEffect(function () {
-		loadUsers();
-	}, []);
+			loadUsers();
+		},
+		[page, limit]
+	);
 
 	return (
 		<div className={styles.users}>
@@ -48,6 +55,14 @@ const Users = () => {
 						</tbody>
 					</table>
 				</div>
+			</div>
+
+			<div>
+				<div className={styles.table_stats}>
+					Showing <SelectComponent val={limit} setVal={setLimit} /> out of{" "}
+					{noOfUsers}
+				</div>
+				<div></div>
 			</div>
 		</div>
 	);
