@@ -1,0 +1,60 @@
+@use "../../styles/mixins";
+@use "../../styles/variables";
+
+.filter_form {
+	top: 5rem;
+	left: 0;
+	display: none;
+	flex-direction: column;
+	position: absolute;
+	gap: 1.5rem;
+	padding: 3rem 2rem;
+	background-color: white;
+	box-shadow: 0px 0px 10px 0px rgba(163, 163, 163, 0.283);
+	width: 25rem;
+	z-index: 2;
+}
+
+.filter_form__buttons {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	& > button {
+		@include mixins.work_sans_font();
+		@include mixins.text_size(md);
+		padding: 1rem 2.5rem;
+		border: 2px solid;
+		border-radius: 6px;
+		cursor: pointer;
+		font-weight: 600;
+		&:first-child {
+			border-color: variables.$secondary_color;
+			background-color: white;
+			color: variables.$secondary_color;
+
+			transform: box-shadow;
+			transition-duration: 500ms;
+			&:focus {
+				box-shadow: 0 0 0 5px rgba(variables.$secondary_color, 0.3);
+
+				transform: box-shadow;
+				transition-duration: 500ms;
+			}
+		}
+
+		&:nth-child(2) {
+			background-color: variables.$primary_color;
+			border-color: variables.$primary_color;
+			color: white;
+			transform: box-shadow;
+			transition-duration: 500ms;
+
+			&:focus {
+				box-shadow: 0 0 0 5px rgba(variables.$primary_color, 0.3);
+				transition-duration: 500ms;
+				outline: none;
+			}
+		}
+	}
+}

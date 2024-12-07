@@ -14,6 +14,8 @@
 			align-items: center;
 			gap: 1rem;
 		}
+
+		position: relative;
 	}
 }
 
@@ -133,6 +135,24 @@
 			transition-duration: 500ms;
 			background-color: #545f7d31;
 			outline: none;
+		}
+	}
+}
+
+.filterBtn {
+	background-color: white;
+	border: none;
+	cursor: pointer;
+	padding: 1rem 1.5rem;
+	border: 2px solid white;
+
+	&:focus-within {
+		border: 2px solid variables.$primary_color;
+		outline: none;
+		cursor: default;
+
+		& > div {
+			display: flex;
 		}
 	}
 }

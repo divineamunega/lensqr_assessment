@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { userData } from "../services/apiUser";
 import styles from "./Table.module.scss";
+import FilterForm from "../features/users/FilterForm";
 
 const tableHead = [
 	"Organization",
@@ -18,7 +19,10 @@ const TableRowHead = () => {
 				<th key={key} className={styles.table_head__element}>
 					<div>
 						<span>{text}</span>
-						<img src="/users/stack.svg" />
+						<button className={styles.filterBtn}>
+							<img src="/users/stack.svg" />
+							<FilterForm />
+						</button>
 					</div>
 				</th>
 			))}

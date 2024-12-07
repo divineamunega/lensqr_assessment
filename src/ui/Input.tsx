@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useId, useRef, useState } from "react";
 import style from "./Input.module.scss";
 
 type Props = {
@@ -7,10 +7,22 @@ type Props = {
 	placeholder?: string;
 	padding?: string;
 	width?: string;
+	label?: string;
+	option?: string[];
 };
 
-const Input = ({ type, required, placeholder, padding, width }: Props) => {
+const Input = ({
+	type,
+	required = false,
+	placeholder,
+	padding,
+	width,
+	label,
+	option,
+}: Props) => {
+	const id = useId();
 	const inputRef = useRef<HTMLInputElement | null>(null);
+	const [showSelect, setShowSelect] = useState(true);
 	const [btnText, setBtnText] = useState(type === "password" ? "SHOW" : "");
 
 	const toggleShow = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -27,6 +39,32 @@ const Input = ({ type, required, placeholder, padding, width }: Props) => {
 		}
 	};
 
+	if (type === "select") {
+		return (
+			<div
+				className={style.inputCont}
+				style={(function () {
+					if (width) return { width };
+				})()}
+			>
+				{label ? <label htmlFor={id}>{label}</label> : null}
+				<select
+					className={style.input}
+					required={required}
+					style={(function () {
+						if (padding) return { padding };
+					})()}
+					id={id}
+				>
+					<option value="Select">Select</option>
+					{option?.map((string) => (
+						<option value={string}>{string}</option>
+					))}
+				</select>
+			</div>
+		);
+	}
+
 	return (
 		<div
 			className={style.inputCont}
@@ -34,6 +72,7 @@ const Input = ({ type, required, placeholder, padding, width }: Props) => {
 				if (width) return { width };
 			})()}
 		>
+			{label ? <label htmlFor={id}>{label}</label> : null}
 			<input
 				className={style.input}
 				type={type}
@@ -43,6 +82,7 @@ const Input = ({ type, required, placeholder, padding, width }: Props) => {
 				style={(function () {
 					if (padding) return { padding };
 				})()}
+				id={id}
 			/>
 			{type === "password" && (
 				<button
