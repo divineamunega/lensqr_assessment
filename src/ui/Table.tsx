@@ -21,8 +21,8 @@ const TableRowHead = () => {
 						<span>{text}</span>
 						<button className={styles.filterBtn}>
 							<img src="/users/stack.svg" />
-							<FilterForm />
 						</button>
+						<FilterForm />
 					</div>
 				</th>
 			))}

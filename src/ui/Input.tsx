@@ -1,5 +1,6 @@
 import { useId, useRef, useState } from "react";
 import style from "./Input.module.scss";
+import { FieldValues, UseFormRegister } from "react-hook-form";
 
 type Props = {
 	type: string;
@@ -9,6 +10,7 @@ type Props = {
 	width?: string;
 	label?: string;
 	option?: string[];
+	register?: UseFormRegister<FieldValues>;
 };
 
 const Input = ({
@@ -19,10 +21,10 @@ const Input = ({
 	width,
 	label,
 	option,
+	register,
 }: Props) => {
 	const id = useId();
 	const inputRef = useRef<HTMLInputElement | null>(null);
-	const [showSelect, setShowSelect] = useState(true);
 	const [btnText, setBtnText] = useState(type === "password" ? "SHOW" : "");
 
 	const toggleShow = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -55,10 +57,14 @@ const Input = ({
 						if (padding) return { padding };
 					})()}
 					id={id}
+					{...(register &&
+						label && { ...register(label.replace(" ", "_").toLowerCase()) })}
 				>
 					<option value="Select">Select</option>
-					{option?.map((string) => (
-						<option value={string}>{string}</option>
+					{option?.map((string, key) => (
+						<option value={string} key={key}>
+							{string}
+						</option>
 					))}
 				</select>
 			</div>
@@ -83,6 +89,8 @@ const Input = ({
 					if (padding) return { padding };
 				})()}
 				id={id}
+				{...(register &&
+					label && { ...register(label.replace(" ", "_").toLowerCase()) })}
 			/>
 			{type === "password" && (
 				<button

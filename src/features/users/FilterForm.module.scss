@@ -13,6 +13,14 @@
 	box-shadow: 0px 0px 10px 0px rgba(163, 163, 163, 0.283);
 	width: 25rem;
 	z-index: 2;
+	text-transform: capitalize;
+
+	& > form {
+		display: flex;
+		gap: 1.5rem;
+		flex-direction: column;
+		width: 100%;
+	}
 }
 
 .filter_form__buttons {
