@@ -5,9 +5,15 @@
 	display: flex;
 	gap: 1rem;
 
-	& > button {
-		@include mixins.work_sans_font();
+	& > p {
 		@include mixins.text_size(lg);
+		display: flex;
+		align-items: start;
+	}
+
+	& > button {
+		@include mixins.text_size(lg);
+		@include mixins.work_sans_font();
 		background-color: rgba(0, 0, 0, 0);
 		border: none;
 		color: rgba(variables.$alt_color, 0.6);
