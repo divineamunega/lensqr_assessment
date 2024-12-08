@@ -13,13 +13,15 @@ const Users = () => {
 	const [limit, setLimit] = useState(10);
 	const [isLoading, setIsLoading] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
+	const [filter, setFilter] = useState({});
+	console.log(filter);
 
 	useEffect(
 		function () {
 			const loadUsers = async function () {
 				setIsLoading(true);
 				setErrorMessage("");
-				const res = await getUsers(page, limit);
+				const res = await getUsers(page, limit, filter);
 				if ("data" in res) {
 					setUsers(res.data);
 					setNoOfUsers(res.total);
@@ -32,7 +34,7 @@ const Users = () => {
 
 			loadUsers();
 		},
-		[page, limit]
+		[page, limit, filter]
 	);
 
 	return (
@@ -47,7 +49,7 @@ const Users = () => {
 				<div className={styles.scroll_table}>
 					<table className={styles.table}>
 						<thead className={styles.table_head}>
-							<TableRowHead />
+							<TableRowHead setFilter={setFilter} />
 						</thead>
 						<tbody className={styles.tbody}>
 							{users.map((user) => (

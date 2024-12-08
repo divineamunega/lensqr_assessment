@@ -16,7 +16,16 @@ type getUsersReturnType = {
 	data: Array<userData>;
 };
 
-const getUsers = async function (page = 1, limit = 10) {
+type filterType = {
+	organization?: string;
+	username?: string;
+	email?: string;
+	date?: string;
+	phone_number?: string;
+	status?: string;
+};
+
+const getUsers = async function (page = 1, limit = 10, filter: filterType) {
 	try {
 		const response = await fetch(URL);
 		const data = await response.json();
@@ -27,11 +36,48 @@ const getUsers = async function (page = 1, limit = 10) {
 		const start = page * limit - limit;
 		const end = page * limit;
 
-		const returnData = {
+		let returnData = {
 			total: data.data.length,
 			data: data.data.slice(start, end),
 		} as getUsersReturnType;
 
+		console.log(returnData);
+
+		if (!!filter.username && filter.username !== "") {
+			const data = returnData.data.filter((user) =>
+				user.firstName.toLowerCase().includes(filter.username!.toLowerCase())
+			);
+
+			returnData = {
+				total: data.length,
+				data,
+			};
+		}
+
+		if (!!filter.email && filter.email !== "") {
+			const data = returnData.data.filter((user) =>
+				user.email.toLowerCase().includes(filter.email!.toLowerCase())
+			);
+
+			returnData = {
+				total: data.length,
+				data,
+			};
+		}
+
+		if (
+			(!!filter.organization && filter.organization !== "Select") ||
+			filter.organization !== ""
+		) {
+			const data = returnData.data.filter((user) =>
+				user.status.toLowerCase().includes(filter.status!.toLowerCase())
+			);
+
+			returnData = {
+				total: data.length,
+				data,
+			};
+		}
 		return returnData;
 	} catch (err) {
 		console.log(err);

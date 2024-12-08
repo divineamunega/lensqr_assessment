@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { userData } from "../services/apiUser";
 import styles from "./Table.module.scss";
 import FilterForm from "../features/users/FilterForm";
+import { Dispatch, SetStateAction, useRef } from "react";
 
 const tableHead = [
 	"Organization",
@@ -12,17 +13,23 @@ const tableHead = [
 	"Status",
 ];
 
-const TableRowHead = () => {
+type TableRowHeadProp = { setFilter: Dispatch<SetStateAction<{}>> };
+
+const TableRowHead = ({ setFilter }: TableRowHeadProp) => {
+	const buttonRef = useRef<HTMLButtonElement>(null);
 	return (
 		<tr className={styles.table_row_head}>
 			{tableHead.map((text, key) => (
 				<th key={key} className={styles.table_head__element}>
 					<div>
 						<span>{text}</span>
-						<button className={styles.filterBtn}>
+						<button className={styles.filterBtn} ref={buttonRef}>
 							<img src="/users/stack.svg" />
+							<FilterForm
+								setFilter={setFilter}
+								button={buttonRef.current ? buttonRef.current : undefined}
+							/>
 						</button>
-						<FilterForm />
 					</div>
 				</th>
 			))}

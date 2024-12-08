@@ -50,6 +50,7 @@
 .scroll_table {
 	overflow-x: auto;
 	max-width: 100%;
+	min-height: 40rem;
 
 	&::-webkit-scrollbar {
 		width: 10px;

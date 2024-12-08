@@ -1,10 +1,38 @@
 import styles from "./FilterForm.module.scss";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Input from "../../ui/Input";
+import { Dispatch, SetStateAction, useRef } from "react";
 
-const FilterForm = () => {
+// type filterType = {
+// 	organization?: string;
+// 	username?: string;
+// 	email?: string;
+// 	date?: string;
+// 	phone_number?: string;
+// 	status?: string;
+// };
+
+type FilterPropType = {
+	setFilter: Dispatch<SetStateAction<{}>>;
+	button?: HTMLButtonElement;
+};
+
+const FilterForm = ({ setFilter, button }: FilterPropType) => {
 	const { register, handleSubmit, reset } = useForm();
-	const onSubmit: SubmitHandler<any> = (data) => console.log(data);
+
+	const filterRef = useRef<HTMLButtonElement>(null);
+
+	const onSubmit: SubmitHandler<any> = (data) => {
+		if (filterRef.current) {
+			filterRef.current.blur();
+		}
+
+		if (button) {
+			console.log(button);
+			button.blur();
+		}
+		setFilter(data);
+	};
 
 	const resetForm = () =>
 		reset((formValues) => {
@@ -75,7 +103,9 @@ const FilterForm = () => {
 					>
 						Reset
 					</button>
-					<button type="submit">Filter</button>
+					<button type="submit" ref={filterRef}>
+						Filter
+					</button>
 				</div>
 			</form>
 		</div>
