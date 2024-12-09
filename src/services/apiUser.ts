@@ -56,7 +56,9 @@ const getUsers = async function (page = 1, limit = 10, filter: filterType) {
 
 		if (!!filter.email && filter.email !== "") {
 			const data = returnData.data.filter((user) =>
-				user.email?.toLowerCase().includes(filter.email!.toLowerCase())
+				user.email
+					?.toLowerCase()
+					.includes(filter.email ? filter.email.toLowerCase() : "")
 			);
 
 			returnData = {
@@ -70,7 +72,9 @@ const getUsers = async function (page = 1, limit = 10, filter: filterType) {
 			filter.organization !== ""
 		) {
 			const data = returnData.data.filter((user) =>
-				user.status.toLowerCase().includes(filter.status!.toLowerCase())
+				user.status
+					.toLowerCase()
+					.includes(filter.status ? filter.status.toLowerCase() : "")
 			);
 
 			returnData = {
