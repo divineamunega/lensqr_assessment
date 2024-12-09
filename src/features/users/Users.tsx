@@ -16,6 +16,8 @@ const Users = () => {
 	const [filter, setFilter] = useState({});
 	console.log(filter);
 
+	console.log(isLoading, errorMessage);
+
 	useEffect(
 		function () {
 			const loadUsers = async function () {
